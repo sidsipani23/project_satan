@@ -1,7 +1,37 @@
-import '../styles/globals.css'
+import '../styles/globals.css';
+import React, { useState, useMemo, createContext } from 'react';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
-}
+	const [mode, setMode] = useState('dark');
+	const colorMode = useMemo(
+		() => ({
+			toggleColorMode: () => {
+				setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+			},
+		}),
+		[]
+	);
 
-export default MyApp
+	const theme = useMemo(
+		() =>
+			createTheme({
+				palette: {
+					mode,
+				},
+			}),
+		[mode]
+	);
+
+	return (
+		<ColorModeContext.Provider value={colorMode}>
+			<ThemeProvider theme={theme}>
+				<Component {...pageProps} />
+			</ThemeProvider>
+		</ColorModeContext.Provider>
+	);
+}
+export const ColorModeContext = createContext({
+	toggleColorMode: () => {},
+});
+export default MyApp;

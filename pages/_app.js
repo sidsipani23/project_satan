@@ -3,7 +3,7 @@ import React, { useState, useMemo, createContext } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 function MyApp({ Component, pageProps }) {
-	const [mode, setMode] = useState('light');
+	const [mode, setMode] = useState('dark');
 	const colorMode = useMemo(
 		() => ({
 			toggleColorMode: () => {

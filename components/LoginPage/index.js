@@ -12,6 +12,8 @@ import Button from '@mui/material/Button';
 import GoogleIcon from '@mui/icons-material/Google';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import FacebookIcon from '@mui/icons-material/Facebook';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+
 function index() {
 	const [inputData, setInputData] = useState({
 		username: '',
@@ -33,8 +35,6 @@ function index() {
 					<CodeIcon sx={{ height: '70px', width: '70px' }} />
 				</Box>
 				<br />
-				<Box>Sign In!</Box>
-				<br />
 				<Box
 					component='form'
 					sx={{
@@ -53,6 +53,13 @@ function index() {
 						sx={{ marginTop: '7%', width: '75%' }}
 						value={inputData.username}
 						onChange={handleChange('username')}
+						InputProps={{
+							startAdornment: (
+								<InputAdornment position='start'>
+									<AccountCircle />
+								</InputAdornment>
+							),
+						}}
 					/>
 					<OutlinedInput
 						sx={{ marginTop: '7%', width: '75%' }}

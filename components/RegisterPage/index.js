@@ -19,6 +19,7 @@ function index() {
 	const [inputData, setInputData] = useState({
 		username: '',
 		password: '',
+		email: '',
 	});
 	const [showPassword, setShowPassword] = useState(false);
 	const handleChange = (prop) => (event) => {
@@ -64,6 +65,8 @@ function index() {
 			<TextField
 				sx={{ marginTop: '4%', width: '35%' }}
 				placeholder='Enter your email address'
+				value={inputData.email}
+				onChange={handleChange('email')}
 				InputProps={{
 					startAdornment: (
 						<InputAdornment position='start'>
